@@ -1,5 +1,8 @@
 body {
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  /* text-align specifically describes how inline content is aligned in a block container
+     so it also applies to images since <img> has display value inline-block */
 }
 
 img {
@@ -10,6 +13,18 @@ img {
 .title {
   font-size: 36px;
   font-weight: 900;
+  margin-bottom: 32px;
+}
+
+.item-container {
+  display: flex;
+  justify-content: center;
+  gap: 52px;
+}
+
+.item {
+  width: 200px;
+  /* since each image is given a specific size in px, width and max-width should have identical behavior */
 }
 
 /* do not edit this footer */
