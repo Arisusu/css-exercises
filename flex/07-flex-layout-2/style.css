@@ -2,28 +2,84 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
   height: 72px;
   background: darkmagenta;
   color: white;
+  font-weight: 900;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
 }
 
 .footer {
   height: 72px;
   background: #eee;
   color: darkmagenta;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebar {
   width: 300px;
   background: royalblue;
   box-sizing: border-box;
+  /* none is 0 0 auto, default flex value is 0 1 auto
+     the solution just setting flex-shrink to 0 is equivalent */
+  flex: none;
+  padding: 16px;
 }
 
 .card {
   border: 1px solid #eee;
   box-shadow: 2px 4px 16px rgba(0,0,0,.06);
   border-radius: 4px;
+  width: 270px;
+  /* in the screenshots, the cards increase in height when there's more space and decrease in height
+  when there's less space. just depends on if we want the cards to change in height like that, i 
+  didn't want them to
+  height: 250px; */
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  /* solution uses flex 1 but there should no difference here because no other element is allowed to grow
+     or shrink (header, sidebar, footer are all static) */
+  flex: auto; 
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.card-container {
+  padding: 32px;
+  display: flex;
+  /* not necessary because the parent container is already allowed to grow (see .content)
+     this line would make it so that the card-container increases as the content container increases
+     without this line, card-container is covers the area with cards and the rest of the container
+     is white space. with this line, there is no white space. view with inspect element and 1 card
+  flex: auto; */
+  flex-wrap: wrap;
+  /* i think gap is better than margin here, parents cares about the layout of its children */
+  gap: 20px;
 }
